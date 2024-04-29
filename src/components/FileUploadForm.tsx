@@ -44,7 +44,7 @@ const FileUploadForm: React.FC = () => {
   return (
     <form className="form" onSubmit={handleSubmit} encType='multipart/form-data'>
       <div>
-        <input className="file-input" type="file" onChange={handleFileChange} />
+        <input className="file-input" type="file" multiple={true} onChange={handleFileChange} />
         <input className="description" type="text" value={description} onChange={handleDescriptionChange} placeholder="Description" />
         <button className="upload-btn" type="submit">Upload</button>
       </div>
