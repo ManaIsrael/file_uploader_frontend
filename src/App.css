@@ -1,0 +1,16 @@
+.form {
+  display: flex;
+  justify-content: center;
+  padding-top: 50px;
+}
+
+.description, .upload-btn {
+  display: block;
+  width: 100%;
+  padding: 10px 0;
+}
+.description {
+  margin: 20px 0;
+  padding-left: 3px;
+  box-sizing: border-box;
+}
