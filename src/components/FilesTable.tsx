@@ -28,6 +28,16 @@ const FilesTable: React.FC = () => {
     }
   };
 
+  const handleViewFile = async (id: number) => {
+    console.log('View file with ID:', id);
+    // Implement logic to view file with fileId
+  };
+
+  const handleUpdateFile = (id: number) => {
+    console.log('Update file with ID:', id);
+    // Implement logic to update file with fileId
+  };
+
   return (
     <table>
       <thead>
@@ -48,6 +58,8 @@ const FilesTable: React.FC = () => {
             </td>
             <td>
               <button onClick={() => handleDelete(file.id)}>Delete</button>
+              <button onClick={() => handleViewFile(file.id)}>View</button>
+              <button onClick={() => handleUpdateFile(file.id)}>Update</button>
             </td>
           </tr>
         ))}
