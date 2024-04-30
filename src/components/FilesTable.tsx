@@ -29,13 +29,35 @@ const FilesTable: React.FC = () => {
   };
 
   const handleViewFile = async (id: number) => {
-    console.log('View file with ID:', id);
-    // Implement logic to view file with fileId
+    try {
+      const response = await axios.get(`/api/files/${id}`);
+      const fileContent = response.data.fileUrl;
+      // Display the file content
+      console.log('View file with ID:', id, 'Content:', fileContent);
+      // open the content in a new tab
+      window.open(`data:${fileContent}`);
+    } catch (error) {
+      console.error('Error viewing file:', error);
+      alert('An error occurred while viewing the file.');
+    }
   };
 
-  const handleUpdateFile = (id: number) => {
-    console.log('Update file with ID:', id);
-    // Implement logic to update file with fileId
+  const handleUpdateFile = async (id: number, newDescription: string) => {
+    try {
+      await axios.put(`/api/files/${id}`, { description: newDescription });
+      // Update the file description in the local state
+      const updatedFiles = files.map((file) => {
+        if (file.id === id) {
+          return { ...file, description: newDescription };
+        }
+        return file;
+      });
+      setFiles(updatedFiles);
+      alert('File updated successfully!');
+    } catch (error) {
+      console.error('Error updating file:', error);
+      alert('An error occurred while updating the file.');
+    }
   };
 
   return (
@@ -59,7 +81,7 @@ const FilesTable: React.FC = () => {
             <td>
               <button onClick={() => handleDelete(file.id)}>Delete</button>
               <button onClick={() => handleViewFile(file.id)}>View</button>
-              <button onClick={() => handleUpdateFile(file.id)}>Update</button>
+              <button onClick={() => handleUpdateFile(file.id, file.description)}>Update</button>
             </td>
           </tr>
         ))}
