@@ -7,7 +7,7 @@ const FilesTable: React.FC = () => {
   useEffect(() => {
     const fetchFiles = async () => {
       try {
-        const response = await axios.get('https://file-uploader-backend-newest.onrender.com/api/files');
+        const response = await axios.get('http://localhost:3000/api/files');
         setFiles(response.data);
       } catch (error) {
         console.error('Error fetching files:', error);
@@ -19,7 +19,7 @@ const FilesTable: React.FC = () => {
 
   const handleDelete = async (id: number) => {
     try {
-      await axios.delete(`https://file-uploader-backend-newest.onrender.com/api/files/${id}`);
+      await axios.delete(`http://localhost:3000/api/files/${id}`);
       setFiles(files.filter((file) => file.id !== id));
       alert('File deleted successfully!');
     } catch (error) {
@@ -30,7 +30,7 @@ const FilesTable: React.FC = () => {
 
   const handleViewFile = async (id: number) => {
     try {
-      const response = await axios.get(`https://file-uploader-backend-newest.onrender.com/api/files/${id}`);
+      const response = await axios.get(`http://localhost:3000/api/files/${id}`);
       const fileContent = response.data.fileUrl;
       // Display the file content
       console.log('View file with ID:', id, 'Content:', fileContent);
@@ -44,7 +44,7 @@ const FilesTable: React.FC = () => {
 
   const handleUpdateFile = async (id: number, newDescription: string) => {
     try {
-      await axios.put(`https://file-uploader-backend-newest.onrender.com/api/files/${id}`, { description: newDescription });
+      await axios.put(`http://localhost:3000/api/files/${id}`, { description: newDescription });
       // Update the file description in the local state
       const updatedFiles = files.map((file) => {
         if (file.id === id) {

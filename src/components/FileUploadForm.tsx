@@ -14,7 +14,8 @@ const FileUploadForm: React.FC = () => {
       setFile(selectedFile);
     }
   };
-
+console.log(file)
+console.log(description)
   const handleDescriptionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setDescription(event.target.value);
   };
@@ -32,7 +33,7 @@ const FileUploadForm: React.FC = () => {
     formData.append('description', description);
 
     try {
-      await axios.post('/api/files', formData, {
+      await axios.post('http://localhost:3000/api/files', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
@@ -40,7 +41,7 @@ const FileUploadForm: React.FC = () => {
       alert('File uploaded successfully!');
     } catch (error) {
       console.error('Error uploading file:', error);
-      alert('An error occurred while uploading the file.');
+      alert(error);
     }
 
     // Navigate to the FilesTable component after uploading
@@ -51,7 +52,7 @@ const FileUploadForm: React.FC = () => {
     <form className="form" onSubmit={handleSubmit} encType='multipart/form-data'>
       <div>
         <input className="file-input" name="file" type="file" multiple={true} onChange={handleFileChange} />
-        <input className="description" name="descriiption" type="text" value={description} onChange={handleDescriptionChange} placeholder="Description" />
+        <input className="description" name="description" type="text" value={description} onChange={handleDescriptionChange} placeholder="Description" />
         <button className="upload-btn" type="submit">Upload</button>
       </div>
     </form>
