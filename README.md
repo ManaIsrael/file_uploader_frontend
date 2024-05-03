@@ -16,7 +16,7 @@ Express
 Sequelize
 MySQL
 ## Deployment:
-Frontend deployed on Vercel
+Frontend deployed on Vercel https://vercel.com/betelhem-yemanes-projects/file-uploader-frontend
 
 ## Setup Instructions
 Clone the repository
@@ -54,3 +54,8 @@ the database query made to get all files when on files page
 ![the files uploaded together with the database query made](./screenshots/Screenshot%20(338).png "files loaded into files typescript page")
 view a file on a new windows tab
 ![one file selected to view](./screenshots/Screenshot%20(341).png "slected file")
+
+### Client App Deployed on Vercel
+![project deployed on my vercel account](./screenshots/Screenshot%20(342).png "deployed on vercel")
+![vercel project](./screenshots/Screenshot%20(344).png "project with vercel url")
+![get files via vercel](./screenshots/Screenshot%20(343).png "fetch files from vercel url")
